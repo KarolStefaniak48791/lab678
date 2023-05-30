@@ -26,7 +26,7 @@ jobs:
           ref: Task8
 
       - name: Build .exe file
-        run: konwerter.exe --onefile --noconsole task8.py
+        run: pyinstaller.exe --onefile --noconsole task8.py
 
       - name: Upload .exe file
         uses: actions/upload-artifact@v3
