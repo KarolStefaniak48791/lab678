@@ -12,10 +12,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout Task9 branch
+      - name: Checkout Task0 branch
         uses: actions/checkout@v2
         with:
-          ref: Task9
+          ref: Task0
 
       - name: Configure environment
         run: .\installResources.ps1
