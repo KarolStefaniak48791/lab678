@@ -17,7 +17,7 @@ jobs:
         with:
           ref: Task0
 
-      - name: Configure environment
+      - name: Konfigurowanie środowiska
         run: .\installResources.ps1
 
       - name: Checkout Task8 branch
@@ -30,7 +30,13 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Build executable
+      - name: Budowanie exe
         run: |
           pip install pyinstaller
           pyinstaller --onefile --noconsole task8.py
+
+      - name: Dodanie pliku exe
+        uses: actions/upload-artifact@v3
+        with:
+          name: Aplikacja
+          path: konwerter.exe
