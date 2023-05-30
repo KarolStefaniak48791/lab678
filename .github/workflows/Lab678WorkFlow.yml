@@ -1,7 +1,7 @@
 name: Lab678WorkFlow
 on:
   schedule:
-    - cron: "0 0 * * 0" 
+    - cron: "0 0 * * 0"
   push:
     branches:
       - main
@@ -12,19 +12,24 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout kodu
-      uses: actions/checkout@v2
-      with:
-          ref: Task0
-      
-    - name: Konfiguracja środowiska
-      run: .\installResources.ps1
+      - name: Checkout Task9 branch
+        uses: actions/checkout@v2
+        with:
+          ref: Task9
 
-    - name: Budowanie pliku .exe
-      run: konwerter.exe --onefile --noconsole task8.py
-      
-    - name: Upload pliku .exe
-      uses: actions/upload-artifact@v3
-      with:
-        name: Wygenerowany plik .exe
-        path: konwerter.exe
+      - name: Configure environment
+        run: .\installResources.ps1
+
+      - name: Checkout Task8 branch
+        uses: actions/checkout@v2
+        with:
+          ref: Task8
+
+      - name: Build .exe file
+        run: konwerter.exe --onefile --noconsole task8.py
+
+      - name: Upload .exe file
+        uses: actions/upload-artifact@v3
+        with:
+          name: Generated .exe file
+          path: konwerter.exe
