@@ -14,9 +14,8 @@ jobs:
     steps:
     - name: Checkout kodu
       uses: actions/checkout@v2
-
-    - name: Konfiguracja środowiska
-      uses: lab678@Task0
+      with:
+          ref: Task0
       
     - name: Konfiguracja środowiska
       run: .\installResources.ps1
